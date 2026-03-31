@@ -4,9 +4,16 @@ const GOOGLE_VIEWER = `https://docs.google.com/viewer?url=${encodeURIComponent(P
 export default function Home() {
   return (
     <main className="h-screen w-screen overflow-hidden">
+      {/* Desktop : iframe direct, rapide et fiable */}
+      <iframe
+        src="/document.pdf"
+        className="hidden md:block w-full h-full border-0"
+        title="Document preview"
+      />
+      {/* Mobile : Google Docs viewer */}
       <iframe
         src={GOOGLE_VIEWER}
-        className="w-full h-full border-0"
+        className="block md:hidden w-full h-full border-0"
         title="Document preview"
       />
     </main>
