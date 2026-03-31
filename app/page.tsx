@@ -4,7 +4,11 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
-    if (window.innerWidth < 768) {
+    const isMobile = window.innerWidth < 768;
+    const isSafari =
+      /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isMobile || isSafari) {
       window.location.href = "/document.pdf";
     }
   }, []);
