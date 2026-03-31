@@ -1,11 +1,18 @@
-const PDF_URL = "https://protegernosenfants.fr/document.pdf";
-const PDFJS_VIEWER = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodeURIComponent(PDF_URL)}`;
+"use client";
+
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      window.location.href = "/document.pdf";
+    }
+  }, []);
+
   return (
     <main className="h-screen w-screen overflow-hidden">
       <iframe
-        src={PDFJS_VIEWER}
+        src="/document.pdf"
         className="w-full h-full border-0"
         title="Document preview"
       />
