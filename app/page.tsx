@@ -18,26 +18,24 @@ export default async function Home() {
   const count = await getDownloadCount();
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen gap-6 p-6">
-      <h1 className="text-2xl font-semibold tracking-tight">Protéger nos enfants</h1>
-
-      {/* PDF viewer */}
-      <div className="w-full max-w-4xl rounded-xl overflow-hidden shadow-2xl border border-gray-800 bg-gray-900">
+    <main className="flex flex-col h-screen">
+      {/* PDF viewer — prend tout l'espace disponible */}
+      <div className="flex-1 min-h-0">
         <iframe
           src="/document.pdf"
-          className="w-full h-[75vh]"
+          className="w-full h-full"
           title="Document preview"
         />
       </div>
 
-      {/* Download button */}
-      <DownloadButton />
-
-      {/* Download counter */}
-      <p className="text-sm text-gray-500">
-        Downloaded <span className="text-gray-300 font-medium">{count}</span>{" "}
-        {count === 1 ? "time" : "times"}
-      </p>
+      {/* Barre du bas */}
+      <div className="flex items-center justify-between px-6 py-3 bg-gray-900 border-t border-gray-800 shrink-0">
+        <p className="text-sm text-gray-500">
+          Téléchargé <span className="text-gray-300 font-medium">{count}</span>{" "}
+          {count === 1 ? "fois" : "fois"}
+        </p>
+        <DownloadButton />
+      </div>
     </main>
   );
 }
